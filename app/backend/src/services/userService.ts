@@ -1,8 +1,10 @@
-import User from '../interfaces/userInterface';
-import UserModel from '../database/models/user';
+// import IUser from '../interfaces/userInterface';
+// import UserModel from '../database/models/user';
 
-class UserService {
-  public model: UserModel;
+// class UserService {
+//   public model: UserModel;
 
-  public async login(data: Omit<User, 'role' | 'username'>): Promise<Omit<User, 'role'
-}
+//   public async login(data: IUser): Promise: <string>{
+
+//   }
+// }
