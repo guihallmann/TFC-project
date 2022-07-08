@@ -1,8 +1,8 @@
 interface User {
   id?: number,
-  username: string,
+  username?: string,
+  role?: string,
   email: string,
-  role: string,
   password: string,
 }
 
