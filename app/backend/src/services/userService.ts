@@ -13,7 +13,7 @@ export default class UserService {
     if (!user) throw errorThrow(401, 'Incorrect email or password');
 
     const pwCheck = bcrypt.compareSync(data.password, user.password);
-    if (!pwCheck) console.log('status: 401, message: Incorrect email or password');
+    if (!pwCheck) throw errorThrow(401, 'Incorrect email or password');
 
     const token = generateToken(user);
     return token;

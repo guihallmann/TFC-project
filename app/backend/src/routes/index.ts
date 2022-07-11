@@ -7,8 +7,8 @@ import LoginValidation from '../middlewares/loginValidation';
 const router = Router();
 
 const entityFactory = () => {
-  const reposittory = new Repository();
-  const service = new UserService(reposittory);
+  const repository = new Repository();
+  const service = new UserService(repository);
   const controller = new UserController(service);
   return controller;
 };
