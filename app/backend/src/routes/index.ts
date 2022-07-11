@@ -8,3 +8,5 @@ const User = new UserController();
 // LOGIN ROUTES
 
 router.post('/login', LoginValidation, User.login);
+
+export default router;

@@ -1,8 +1,11 @@
 import { Request, Response, NextFunction } from 'express';
+import { IService } from '../interfaces/userInterface';
 import UserService from '../services/userService';
 
-class UserController {
-  constructor(private userService = new UserService()) {}
+export default class UserController {
+  constructor(private userService: IService) {
+    this.userService = userService;
+  }
 
   public login = async (req: Request, res: Response, next: NextFunction) => {
     try {
@@ -13,5 +16,3 @@ class UserController {
     }
   };
 }
-
-export default UserController;

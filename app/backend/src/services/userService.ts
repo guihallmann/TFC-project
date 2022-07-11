@@ -1,10 +1,11 @@
-// import IUser from '../interfaces/userInterface';
-// import UserModel from '../database/models/user';
+import IUser from '../interfaces/userInterface';
+import UserModel from '../database/models/user';
 
-// class UserService {
-//   public model: UserModel;
+class UserService {
+  public model: UserModel;
 
-//   public async login(data: IUser): Promise: <string>{
+  public async login(data: IUser): Promise: <string>{
+    const user: IUser = this.model.findOne({ where: { email: data.email }});
 
-//   }
-// }
+  }
+}
