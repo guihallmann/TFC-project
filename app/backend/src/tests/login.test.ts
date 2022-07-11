@@ -64,21 +64,23 @@ describe('Testing a unsuccessful login', () => {
     (User.findOne as sinon.SinonStub).restore();
   })
 
-  it('Should return a status code 400 if the email is invalid', async () => {
+  it('Should return a status code 401 if the email or password is invalid', async () => {
     chaiHttpResponse = await chai
        .request(app)
        .post('/login')
-       .send({email: 'admin.com', password: 'secret_admin' })
+       .send({email: 'adm@admin.com', password: 'secret' })
 
-    expect(chaiHttpResponse).to.have.status(400);
+    expect(chaiHttpResponse).to.have.status(401);
+    expect(chaiHttpResponse.body.message).to.equal('Incorrect email or password');
   });
 
-  it('Should return a status code 400 if the password is invalid', async () => {
+  it('Should return a status code 400 if there is a missing email or password', async () => {
     chaiHttpResponse = await chai
        .request(app)
        .post('/login')
-       .send({email: 'admin@admin.com', password: '111' })
+       .send({email: '', password: '' })
 
-    expect(chaiHttpResponse).to.have.status(400);
+    expect(chaiHttpResponse).to.have.status(401);
+    expect(chaiHttpResponse.body.message).to.equal('Incorrect email or password');
   });
 });
