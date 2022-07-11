@@ -1,6 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
 import { IService } from '../interfaces/userInterface';
-import UserService from '../services/userService';
 
 export default class UserController {
   constructor(private userService: IService) {
