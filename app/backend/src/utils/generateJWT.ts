@@ -6,7 +6,7 @@ const jwtConfig: SignOptions = {
   algorithm: 'HS256',
 };
 
-const jwtSecret = 'xablablau';
+const jwtSecret = 'jwt_secret';
 
 const generateToken = (payload: IUser) => {
   const token = sign({ payload }, jwtSecret, jwtConfig);
