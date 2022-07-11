@@ -1,3 +1,3 @@
-const errorThrow = (code: number, message: string) => ({ code, message });
+const errorThrow = (status: number, message: string) => ({ status, message });
 
 export default errorThrow;

@@ -1,7 +1,7 @@
-import { sign } from 'jsonwebtoken';
+import { sign, SignOptions } from 'jsonwebtoken';
 import { IUser } from '../interfaces/userInterface';
 
-const jwtConfig = {
+const jwtConfig: SignOptions = {
   expiresIn: '7d',
   algorithm: 'HS256',
 };
