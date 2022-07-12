@@ -14,12 +14,10 @@ const entityFactory = () => {
   return controller;
 };
 
-// LOGIN ROUTES
-
-router.post('/login', loginValidation, (req, res, next) => {
+router.post('/', loginValidation, (req, res, next) => {
   entityFactory().login(req, res, next);
 });
 
-router.get('/login/validate', tokenValidation);
+router.get('/validate', tokenValidation);
 
 export default router;
