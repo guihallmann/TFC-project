@@ -20,3 +20,5 @@ Team.init({
   modelName: 'teams',
   timestamps: false,
 });
+
+export default Team;
