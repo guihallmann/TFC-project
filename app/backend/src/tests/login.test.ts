@@ -80,7 +80,7 @@ describe('Testing a unsuccessful login', () => {
        .post('/login')
        .send({email: '', password: '' })
 
-    expect(chaiHttpResponse).to.have.status(401);
-    expect(chaiHttpResponse.body.message).to.equal('Incorrect email or password');
+    expect(chaiHttpResponse).to.have.status(400);
+    expect(chaiHttpResponse.body.message).to.equal('All fields must be filled');
   });
 });
