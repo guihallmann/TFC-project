@@ -11,7 +11,7 @@ interface IPayload {
     username: string,
     role: string,
     email: string,
-    password: string
+    password?: string
   }
 }
 
@@ -24,7 +24,7 @@ const tokenValidation = (req: Request, res: Response, _next: NextFunction) => {
 
     const { payload: { role } } = decoded as IPayload;
 
-    return res.status(200).json(role);
+    return res.status(200).json({ role });
   } catch (error) {
     return res.status(401).json({ message: 'Invalid token' });
   }
