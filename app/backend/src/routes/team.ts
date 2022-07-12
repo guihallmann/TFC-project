@@ -16,4 +16,8 @@ router.get('/', (req, res, next) => {
   entityFactory().getAll(req, res, next);
 });
 
+router.get('/:id', (req, res, next) => {
+  entityFactory().getById(req, res, next);
+});
+
 export default router;
