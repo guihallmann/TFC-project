@@ -2,6 +2,7 @@ import { Router } from 'express';
 import Repository from '../repository/matchRepository';
 import MatchService from '../services/matchService';
 import MatchController from '../controllers/matchController';
+import tokenValidation from '../middlewares/tokenValidation';
 
 const router = Router();
 
@@ -16,4 +17,7 @@ router.get('/', (req, res, next) => {
   entityFactory().getAll(req, res, next);
 });
 
+router.post('/', tokenValidation, (req, res, next) => {
+  entityFactory().create(req, res, next);
+});
 export default router;

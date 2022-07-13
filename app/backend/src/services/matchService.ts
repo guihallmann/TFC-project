@@ -16,4 +16,9 @@ export default class MatchService {
     });
     return matches;
   }
+
+  public async create(data: object): Promise<IMatch> {
+    const newMatch = this.model.create(data);
+    return newMatch;
+  }
 }

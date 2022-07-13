@@ -9,8 +9,10 @@ export interface IMatch {
 
 export interface IService {
   getAll(): Promise<IMatch[]>,
+  create(data: object): Promise<IMatch>,
 }
 
 export interface IModel {
   getAll(data: object): Promise<IMatch[]>
+  create(data: object): Promise<IMatch>,
 }
