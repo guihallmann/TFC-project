@@ -1,14 +1,14 @@
 import { Router } from 'express';
 import Repository from '../repository/matchRepository';
 import MatchService from '../services/matchService';
-// import TeamController from '../controllers/teamController';
+import MatchController from '../controllers/matchController';
 
 const router = Router();
 
 const entityFactory = () => {
   const repository = new Repository();
   const service = new MatchService(repository);
-  const controller = new TeamController(service);
+  const controller = new MatchController(service);
   return controller;
 };
 
