@@ -20,4 +20,7 @@ router.get('/', (req, res, next) => {
 router.post('/', matchValidation, (req, res, next) => {
   entityFactory().create(req, res, next);
 });
+
+router.patch('/:id/finish', () => console.log('rota /:id/finish'));
+
 export default router;
