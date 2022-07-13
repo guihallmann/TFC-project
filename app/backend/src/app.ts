@@ -1,6 +1,7 @@
 import * as express from 'express';
 import loginRoute from './routes/login';
 import teamsRoute from './routes/team';
+import matchesRoute from './routes/match';
 import errorHandler from './middlewares/errorMiddleware';
 
 class App {
@@ -27,6 +28,7 @@ class App {
     this.app.use(accessControl);
     this.app.use('/login', loginRoute);
     this.app.use('/teams', teamsRoute);
+    this.app.use('/matches', matchesRoute);
     this.app.use(errorHandler);
   }
 
