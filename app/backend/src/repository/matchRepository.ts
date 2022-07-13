@@ -6,8 +6,8 @@ export default class Repository implements IModel {
     this.model = model;
   }
 
-  async getAll(): Promise<IMatch[]> {
-    const teams = await this.model.findAll();
-    return teams as IMatch[];
+  async getAll(data: object): Promise<IMatch[]> {
+    const matches = await this.model.findAll(data);
+    return matches as IMatch[];
   }
 }

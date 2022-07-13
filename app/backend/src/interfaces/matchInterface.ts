@@ -12,5 +12,5 @@ export interface IService {
 }
 
 export interface IModel {
-  getAll(): Promise<IMatch[]>
+  getAll(data: object): Promise<IMatch[]>
 }
