@@ -10,4 +10,9 @@ export default class Repository implements IModel {
     const matches = await this.model.findAll(data);
     return matches as IMatch[];
   }
+
+  async create(data: object): Promise<IMatch> {
+    const newMatch = await this.model.create(data);
+    return newMatch as IMatch;
+  }
 }
