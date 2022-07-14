@@ -11,7 +11,7 @@ const matchValidation = (req: Request, res: Response, next: NextFunction) => {
     if (!authorization) res.status(401).json({ message: 'Token missing' });
     verify(authorization as string, jwtSecret);
     if (homeTeam === awayTeam) {
-      next({ status: 400, message: 'Teams can not be the same' });
+      next({ status: 401, message: 'It is not possible to create a match with two equal teams' });
     }
     next();
   } catch (error) {
