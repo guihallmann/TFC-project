@@ -18,8 +18,8 @@ export default class Repository implements IModel {
     return newMatch as IMatch;
   }
 
-  async update(property: object, value: where): Promise<object> {
-    const updateStatus = await this.model.update(property, value);
+  async update(property: object, id: where): Promise<object> {
+    const updateStatus = await this.model.update(property, id);
     return updateStatus;
   }
 }
