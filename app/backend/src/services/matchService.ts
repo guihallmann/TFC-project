@@ -1,6 +1,6 @@
 import { IModel, IMatch } from '../interfaces/matchInterface';
 import Team from '../database/models/team';
-// import errorThrow from '../utils/errorThrow';
+import errorThrow from '../utils/errorThrow';
 
 export default class MatchService {
   constructor(private model: IModel) {
@@ -18,8 +18,12 @@ export default class MatchService {
   }
 
   public async create(data: object): Promise<IMatch> {
-    const newMatch = await this.model.create(data);
-    return newMatch;
+    try {
+      const newMatch = await this.model.create(data);
+      return newMatch;
+    } catch (error) {
+      throw errorThrow(404, 'There is no team with such id!');
+    }
   }
 
   public async update(id: string): Promise<object> {
