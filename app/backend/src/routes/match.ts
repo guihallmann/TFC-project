@@ -21,6 +21,8 @@ router.post('/', matchValidation, (req, res, next) => {
   entityFactory().create(req, res, next);
 });
 
-router.patch('/:id/finish', () => console.log('rota /:id/finish'));
+router.patch('/:id/finish', (req, res, next) => {
+  entityFactory().update(req, res, next);
+});
 
 export default router;

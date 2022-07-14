@@ -8,7 +8,7 @@ export default class MatchService {
   }
 
   public async getAll(): Promise<IMatch[]> {
-    const matches = this.model.getAll({
+    const matches = await this.model.getAll({
       include: [
         { model: Team, as: 'teamHome', attributes: { exclude: ['id'] } },
         { model: Team, as: 'teamAway', attributes: { exclude: ['id'] } },
@@ -18,7 +18,12 @@ export default class MatchService {
   }
 
   public async create(data: object): Promise<IMatch> {
-    const newMatch = this.model.create(data);
+    const newMatch = await this.model.create(data);
     return newMatch;
+  }
+
+  public async update(id: string): Promise<object> {
+    await this.model.update({ inProgress: false }, { where: { id } });
+    return { message: 'Finished' };
   }
 }
