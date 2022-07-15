@@ -21,6 +21,10 @@ router.post('/', matchValidation, (req, res, next) => {
   entityFactory().create(req, res, next);
 });
 
+router.patch('/:id', (req, res, next) => {
+  entityFactory().updateResult(req, res, next);
+});
+
 router.patch('/:id/finish', (req, res, next) => {
   entityFactory().update(req, res, next);
 });

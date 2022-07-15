@@ -22,4 +22,9 @@ export default class Repository implements IModel {
     const updateStatus = await this.model.update(property, id);
     return updateStatus;
   }
+
+  async updateResult(properties: object, id: where): Promise<object> {
+    const updateGoals = await this.model.update(properties, id);
+    return updateGoals;
+  }
 }

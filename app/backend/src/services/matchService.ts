@@ -30,4 +30,9 @@ export default class MatchService {
     await this.model.update({ inProgress: false }, { where: { id } });
     return { message: 'Finished' };
   }
+
+  public async updateResult(id: string, goals: object): Promise<object> {
+    await this.model.updateResult(goals, { where: { id } });
+    return { message: 'Result has been updated' };
+  }
 }
