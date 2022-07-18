@@ -11,10 +11,10 @@ export interface ILeaderboard {
   efficiency: number,
 }
 
-export interface IService {
-  getAllHome(): Promise<ILeaderboard>,
-}
+// export interface IService {
+//   getAllHome(): Promise<ILeaderboard[]>,
+// }
 
-export interface IModel {
-  getAllHome(data: object): Promise<ILeaderboard>,
-}
+// export interface IModel {
+//   getAllHome(data: object): Promise<ILeaderboard[]>,
+// }
