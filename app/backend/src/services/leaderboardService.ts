@@ -1,21 +1,32 @@
-// import { IModel, ILeaderboard } from '../interfaces/leaderboardInterface';
 import Team from '../database/models/team';
 import Matches from '../database/models/match';
+import { IData } from '../interfaces/leaderboardInterface';
+
+const formatFunction = (data: IData[]) => {
+  const format = data.map((team: IData) => ({
+    name: team.teamHome,
+  }));
+  return format;
+};
 
 export default class LeaderboardService {
   private teamModel = Team;
   private matchModel = Matches;
 
   public async getAllHome(): Promise<object[]> {
-    const homeMatches = await this.teamModel.findAll({
-      include: {
-        model: this.matchModel,
-        as: 'teamHome',
-        attributes: { exclude: ['id', 'inProgress'] },
-        where: { inProgress: false },
+    const matches = this.matchModel.findAll({
+      where: { inProgress: false },
+      attributes: {
+        exclude: ['id', 'inProgress', 'homeTeam', 'awayTeam'],
       },
-      attributes: { exclude: ['id'] },
+      include: {
+        model: this.teamModel,
+        as: 'teamHome',
+        attributes: {
+          exclude: ['id'],
+        },
+      },
     });
-    return homeMatches;
+    return matches;
   }
 }
