@@ -14,4 +14,8 @@ router.get('/home', (req, res, next) => {
   entityFactory().getAllHome(req, res, next);
 });
 
+router.get('/away', (req, res, next) => {
+  entityFactory().getAllAway(req, res, next);
+});
+
 export default router;

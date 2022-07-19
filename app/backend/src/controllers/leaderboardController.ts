@@ -14,4 +14,13 @@ export default class LeaderboardController {
       next(error);
     }
   };
+
+  public getAllAway = async (_req: Request, res: Response, next: NextFunction) => {
+    try {
+      const awayGames = await this.leaderboardService.getAllAway();
+      return res.status(200).json(awayGames);
+    } catch (error) {
+      next(error);
+    }
+  };
 }

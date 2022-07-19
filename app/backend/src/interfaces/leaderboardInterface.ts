@@ -28,4 +28,5 @@ export interface IAway {
 
 export interface IService {
   getAllHome(): Promise<object[]>,
+  getAllAway(): Promise<object[]>,
 }
