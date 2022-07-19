@@ -16,10 +16,14 @@ export interface IGoals {
   awayTeamGoals: number,
 }
 
-export interface IHomeAway {
+export interface IHome {
   teamName: string,
-  homeMatch?: IGoals[],
-  awayMatch?: IGoals[],
+  homeMatch: IGoals[],
+}
+
+export interface IAway {
+  teamName: string,
+  awayMatch: IGoals[],
 }
 
 export interface IService {

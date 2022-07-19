@@ -1,6 +1,7 @@
 import Team from '../database/models/team';
 import Matches from '../database/models/match';
-import formatResponse from '../utils/leaderboardRules';
+import formatHomeMatches from '../utils/leaderboardRules';
+import { IHome } from '../interfaces/leaderboardInterface';
 
 export default class LeaderboardService {
   private teamModel = Team;
@@ -17,8 +18,9 @@ export default class LeaderboardService {
         where: { inProgress: false },
       },
       attributes: { exclude: ['id'] },
-    });
-    return formatResponse(matches);
+    }) as unknown as IHome[];
+    console.log(matches);
+    return formatHomeMatches(matches);
   }
 
   public async getAllAway() {
