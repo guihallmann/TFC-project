@@ -11,6 +11,21 @@ export interface ILeaderboard {
   efficiency: number,
 }
 
+export interface IGoals {
+  homeTeamGoals: number,
+  awayTeamGoals: number,
+}
+
+export interface IHome {
+  teamName: string,
+  homeMatch: IGoals[]
+}
+
+export interface IAway {
+  teamName: string,
+  awayMatch: IGoals[],
+}
+
 export interface IService {
   getAllHome(): Promise<object[]>,
 }

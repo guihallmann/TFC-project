@@ -1,5 +1,6 @@
 import Team from '../database/models/team';
 import Matches from '../database/models/match';
+import { IHome } from '../interfaces/leaderboardInterface';
 
 export default class LeaderboardService {
   private teamModel = Team;
@@ -16,7 +17,7 @@ export default class LeaderboardService {
         where: { inProgress: false },
       },
       attributes: { exclude: ['id'] },
-    });
+    }) as unknown as IHome[];
     return matches;
   }
 }
