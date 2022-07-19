@@ -1,6 +1,14 @@
 import Team from '../database/models/team';
 import Matches from '../database/models/match';
-import { IAway, IHome } from '../interfaces/leaderboardInterface';
+import { IHomeAway } from '../interfaces/leaderboardInterface';
+
+const formatResponse = (data: IHomeAway[]): object[] => {
+  console.log(data);
+  const format = data.map((team) => ({
+    name: team.teamName,
+  }));
+  return format;
+};
 
 export default class LeaderboardService {
   private teamModel = Team;
@@ -17,8 +25,8 @@ export default class LeaderboardService {
         where: { inProgress: false },
       },
       attributes: { exclude: ['id'] },
-    }) as unknown as IHome[];
-    return matches;
+    }) as unknown as IHomeAway[];
+    return formatResponse(matches);
   }
 
   public async getAllAway() {
@@ -32,7 +40,7 @@ export default class LeaderboardService {
         where: { inProgress: false },
       },
       attributes: { exclude: ['id'] },
-    }) as unknown as IAway[];
+    }) as unknown as IHomeAway[];
     return matches;
   }
 }
