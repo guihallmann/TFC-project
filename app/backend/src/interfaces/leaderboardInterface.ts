@@ -14,13 +14,3 @@ export interface ILeaderboard {
 export interface IService {
   getAllHome(): Promise<object[]>,
 }
-
-export interface IData {
-  homeTeamGoals: number,
-  awayTeamGoals: number,
-  teamHome: teamName,
-}
-
-type teamName = {
-  teamName: string,
-};
