@@ -19,7 +19,6 @@ export default class LeaderboardService {
       },
       attributes: { exclude: ['id'] },
     }) as unknown as IHome[];
-    console.log(matches);
     return formatHomeMatches(matches);
   }
 
