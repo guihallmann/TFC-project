@@ -1,4 +1,4 @@
-import { IGoals, IHome } from '../interfaces/leaderboardInterface';
+import { IGoals, IHome, ILeaderboard } from '../interfaces/leaderboardInterface';
 
 const totalPoints = (data: IGoals[]) => {
   let points = 0;
@@ -64,9 +64,14 @@ const efficiency = (data: IGoals[]) => {
   return result;
 };
 
+const sortTeams = (data: ILeaderboard[]) => data.sort((a, b) =>
+  b.totalPoints - a.totalPoints
+    || b.totalVictories - a.totalVictories
+    || b.goalsFavor - a.goalsFavor
+    || b.goalsOwn - a.goalsOwn);
+
 const formatHomeMatches = (data: IHome[]) => {
-  console.log(data);
-  const format = data.map((team) => ({
+  const teamsPerformance = data.map((team) => ({
     name: team.teamName,
     totalPoints: totalPoints(team.homeMatch),
     totalGames: totalGames(team.homeMatch),
@@ -77,8 +82,8 @@ const formatHomeMatches = (data: IHome[]) => {
     goalsOwn: goalsOwn(team.homeMatch),
     goalsBalance: goalsFavor(team.homeMatch) - goalsOwn(team.homeMatch),
     efficiency: efficiency(team.homeMatch),
-  }));
-  return format;
+  })) as unknown as ILeaderboard[];
+  return sortTeams(teamsPerformance);
 };
 
 export default formatHomeMatches;
