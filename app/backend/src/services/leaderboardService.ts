@@ -1,21 +1,13 @@
 import Team from '../database/models/team';
 import Matches from '../database/models/match';
-import { IHomeAway } from '../interfaces/leaderboardInterface';
-
-const formatResponse = (data: IHomeAway[]): object[] => {
-  console.log(data);
-  const format = data.map((team) => ({
-    name: team.teamName,
-  }));
-  return format;
-};
+import formatResponse from '../utils/leaderboardRules';
 
 export default class LeaderboardService {
   private teamModel = Team;
   private matchModel = Matches;
 
   public async getAllHome() {
-    const matches = this.teamModel.findAll({
+    const matches = await this.teamModel.findAll({
       include: {
         model: this.matchModel,
         as: 'homeMatch',
@@ -25,12 +17,12 @@ export default class LeaderboardService {
         where: { inProgress: false },
       },
       attributes: { exclude: ['id'] },
-    }) as unknown as IHomeAway[];
+    });
     return formatResponse(matches);
   }
 
   public async getAllAway() {
-    const matches = this.teamModel.findAll({
+    const matches = await this.teamModel.findAll({
       include: {
         model: this.matchModel,
         as: 'awayMatch',
@@ -40,7 +32,7 @@ export default class LeaderboardService {
         where: { inProgress: false },
       },
       attributes: { exclude: ['id'] },
-    }) as unknown as IHomeAway[];
+    });
     return matches;
   }
 }
