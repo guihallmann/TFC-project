@@ -9,14 +9,6 @@ const totalPoints = (data: IGoals[]) => {
   return points;
 };
 
-const totalGames = (data: IGoals[]) => {
-  let games = 0;
-  data.forEach(() => {
-    games += 1;
-  });
-  return games;
-};
-
 const totalVictories = (data: IGoals[]) => {
   let wins = 0;
   data.forEach((match) => {
@@ -58,7 +50,7 @@ const goalsOwn = (data: IGoals[]) => {
 };
 
 const efficiency = (data: IGoals[]) => {
-  const allGames = totalGames(data);
+  const allGames = data.length;
   const allPoints = totalPoints(data);
   const result = ((allPoints / (allGames * 3)) * 100).toFixed(2);
   return result;
@@ -74,7 +66,7 @@ const formatHomeMatches = (data: IHome[]) => {
   const teamsPerformance = data.map((team) => ({
     name: team.teamName,
     totalPoints: totalPoints(team.homeMatch),
-    totalGames: totalGames(team.homeMatch),
+    totalGames: team.homeMatch.length,
     totalVictories: totalVictories(team.homeMatch),
     totalDraws: totalDraws(team.homeMatch),
     totalLosses: totalLosses(team.homeMatch),
