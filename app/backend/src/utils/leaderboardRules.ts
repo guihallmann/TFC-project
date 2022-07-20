@@ -80,3 +80,5 @@ const formatHomeMatches = (data: IHome[]) => {
 };
 
 export default formatHomeMatches;
+
+// pensar numa forma de dinamizar as funções, para usar tanto para home quanto away
