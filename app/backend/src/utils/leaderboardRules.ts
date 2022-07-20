@@ -59,6 +59,7 @@ const efficiency = (data: IGoals[]) => {
 const sortTeams = (data: ILeaderboard[]) => data.sort((a, b) =>
   b.totalPoints - a.totalPoints
     || b.totalVictories - a.totalVictories
+    || (b.goalsFavor - b.goalsOwn) - (a.goalsFavor - a.goalsOwn)
     || b.goalsFavor - a.goalsFavor
     || b.goalsOwn - a.goalsOwn);
 
